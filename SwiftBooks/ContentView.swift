@@ -7,40 +7,57 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  var body: some View {
-    List {
-      ForEach(0..<5) { _ in
-        NavigationLink(
-          destination: BookDetailView(book: "Book name")) {
-          HStack {
-            Image("swiftUI")
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 100, height: 100)
+let books = [Book(name: "Swift UI"), Book(name:"Swift UI 2"), Book(name:"Swift UI 3")]
 
-            Text("Book Name")
-          }
-        }
+struct Book: Identifiable {
+  var id = UUID()
+  let name: String
+}
+
+struct ContentView: View {
+  @State var isPresented = false
+  @State var selectedBook: Book?
+
+  var body: some View {
+    List(books) { book in
+      HStack {
+        Image("swiftUI")
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(width: 100, height: 100)
+          .cornerRadius(20.0)
+        Text(book.name)
+          .foregroundColor(.black)
+        Spacer()
+      }
+      .padding()
+      .background(Color.gray.opacity(0.3))
+      .cornerRadius(20.0)
+      .overlay(
+        RoundedRectangle(cornerRadius: 20.0)
+          .stroke(Color.gray)
+      )
+      .onTapGesture {
+        selectedBook = book
+        isPresented = true
       }
     }
-    .navigationTitle(Text("String"))
-    .navigationViewStyle(StackNavigationViewStyle())
+    .sheet(isPresented: $isPresented) {
+      BookDetailView(book: $selectedBook)
+    }
   }
 }
 
 struct BookDetailView: View {
-  let book: String
+  @Binding var book: Book?
   var body: some View {
-    Text(book)
+    Text(book?.name ?? "Book N/A")
       .foregroundColor(.green)
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    NavigationView {
-      ContentView()
-    }
+    ContentView()
   }
 }
