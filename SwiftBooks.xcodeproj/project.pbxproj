@@ -11,6 +11,7 @@
 		EEEF1AFA25602C9800CDE5E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEF1AF925602C9800CDE5E9 /* ContentView.swift */; };
 		EEEF1AFC25602C9900CDE5E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEEF1AFB25602C9900CDE5E9 /* Assets.xcassets */; };
 		EEEF1AFF25602C9900CDE5E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEEF1AFE25602C9900CDE5E9 /* Preview Assets.xcassets */; };
+		EEEF1B1F2560664100CDE5E9 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEF1B1E2560664100CDE5E9 /* BookDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		EEEF1AFB25602C9900CDE5E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEEF1AFE25602C9900CDE5E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EEEF1B0025602C9900CDE5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEEF1B1E2560664100CDE5E9 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		EEEF1AF625602C9800CDE5E9 /* SwiftBooks */ = {
 			isa = PBXGroup;
 			children = (
+				EEEF1B1D2560663400CDE5E9 /* Views */,
 				EEEF1AF725602C9800CDE5E9 /* SwiftBooksApp.swift */,
 				EEEF1AF925602C9800CDE5E9 /* ContentView.swift */,
 				EEEF1AFB25602C9900CDE5E9 /* Assets.xcassets */,
@@ -67,6 +70,14 @@
 				EEEF1AFE25602C9900CDE5E9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EEEF1B1D2560663400CDE5E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEEF1B1E2560664100CDE5E9 /* BookDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEEF1AFA25602C9800CDE5E9 /* ContentView.swift in Sources */,
+				EEEF1B1F2560664100CDE5E9 /* BookDetailView.swift in Sources */,
 				EEEF1AF825602C9800CDE5E9 /* SwiftBooksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
