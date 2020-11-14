@@ -40,19 +40,14 @@ struct ContentView: View {
   var body: some View {
     VStack {
       ScrollView(.horizontal) {
-        HStack(spacing: 10) {
+        HStack(spacing: 40) {
           ForEach(topBooks) { book in
             NavigationLink(destination: BookDetailView(book: book)) {
-              Image(book.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
-                .cornerRadius(20.0)
-                .padding([.leading, .trailing], 5)
+              CarouselItem(book: book)
             }
           }
         }
-        .padding([.top, .bottom] , 20)
+        .padding([.bottom, .leading, .trailing], 20)
       }
       ScrollView {
         ForEach(books) { book in
