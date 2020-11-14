@@ -30,33 +30,39 @@ struct Book: Identifiable {
 
 struct ContentView: View {
   var body: some View {
-    List(books) { book in
-      NavigationLink(destination: BookDetailView(book: book)) {
-        HStack {
-          Image(book.imageName)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 100, height: 100)
-            .cornerRadius(20.0)
-          Text(book.name)
-            .foregroundColor(.black)
-          Spacer()
+    ScrollView {
+      ForEach(books) { book in
+        NavigationLink(destination: BookDetailView(book: book)) {
+          HStack {
+            Image(book.imageName)
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+              .frame(width: 100, height: 100)
+              .cornerRadius(20.0)
+            Text(book.name)
+              .foregroundColor(.black)
+            Spacer()
+          }
+          .padding()
+          .background(Color.gray.opacity(0.3))
+          .cornerRadius(20.0)
+          .overlay(
+            RoundedRectangle(cornerRadius: 20.0)
+              .stroke(Color.gray)
+          )
         }
-        .padding()
-        .background(Color.gray.opacity(0.3))
-        .cornerRadius(20.0)
-        .overlay(
-          RoundedRectangle(cornerRadius: 20.0)
-            .stroke(Color.gray)
-        )
       }
     }
+    .padding(20)
+    .edgesIgnoringSafeArea(.bottom)
     .navigationTitle("My Books")
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    NavigationView {
+      ContentView()
+    }
   }
 }
