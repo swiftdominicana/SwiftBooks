@@ -7,11 +7,16 @@
 
 import SwiftUI
 
-let books = [Book(name: "Swift UI"), Book(name:"Swift UI 2"), Book(name:"Swift UI 3")]
+let books = [
+  Book(name: "Swift UI", imageName: "swiftUI"),
+  Book(name:"Auto Layout", imageName: "auto-layout"),
+  Book(name:"Clean Code", imageName: "clean-code")
+]
 
 struct Book: Identifiable {
   var id = UUID()
   let name: String
+  let imageName: String
 }
 
 struct ContentView: View {
@@ -21,7 +26,7 @@ struct ContentView: View {
   var body: some View {
     List(books) { book in
       HStack {
-        Image("swiftUI")
+        Image(book.imageName)
           .resizable()
           .aspectRatio(contentMode: .fill)
           .frame(width: 100, height: 100)
@@ -51,8 +56,24 @@ struct ContentView: View {
 struct BookDetailView: View {
   @Binding var book: Book?
   var body: some View {
-    Text(book?.name ?? "Book N/A")
-      .foregroundColor(.green)
+    if book == nil {
+      Text("Book Not Available")
+    }
+    else {
+      VStack {
+        Spacer()
+        Image(book!.imageName)
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .frame(width: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        Text(book!.name)
+          .font(.title)
+          .foregroundColor(.green)
+        Text("Here goes the descriptio")
+          .font(.body)
+        Spacer()
+      }.padding(30.0)
+    }
   }
 }
 
